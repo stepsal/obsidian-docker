@@ -1,8 +1,8 @@
 FROM ghcr.io/linuxserver/baseimage-rdesktop-web:focal
 
-LABEL org.opencontainers.image.authors="github@sytone.com"
-LABEL org.opencontainers.image.source="https://github.com/sytone/obsidian-remote"
-LABEL org.opencontainers.image.title="Container hosted Obsidian MD"
+LABEL org.opencontainers.image.authors="github@stepsal.com"
+LABEL org.opencontainers.image.source="https://github.com/stepsal/obsidian-docker-wl"
+LABEL org.opencontainers.image.title="Wei Labs Obsidian Docker Container"
 LABEL org.opencontainers.image.description="Hosted Obsidian instance allowing access via web browser"
 
 RUN \
@@ -12,6 +12,7 @@ RUN \
         apt-get install -y --no-install-recommends \
             # Packages needed to download and extract obsidian.
             curl \
+            git \
             libnss3 \
             # Install Chrome dependencies.
             dbus-x11 \
@@ -24,7 +25,7 @@ RUN \
         /tmp/*
 
 # set version label
-ARG OBSIDIAN_VERSION=0.13.31
+ARG OBSIDIAN_VERSION=0.15.6
 
 RUN \
     echo "**** download obsidian ****" && \
